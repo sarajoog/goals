@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { useUser } from '@clerk/nextjs'
+import { useUser } from '@clerk/nextjs';
 import {
   Rocket,
   Zap,
@@ -11,12 +11,12 @@ import {
   CheckCircle,
   LayoutDashboard,
   User,
-} from 'lucide-react'
-import Link from 'next/link'
-import ThemeSwitch from '@/components/theme-switch'
+} from 'lucide-react';
+import Link from 'next/link';
+import ThemeSwitch from '@/components/theme-switch';
 
 export default function Home() {
-  const { isLoaded, isSignedIn } = useUser()
+  const { isLoaded, isSignedIn } = useUser();
 
   const features = [
     {
@@ -34,7 +34,7 @@ export default function Home() {
       title: 'Team Ready',
       description: 'Built for collaboration with role-based access control',
     },
-  ]
+  ];
 
   const benefits = [
     'Modern React with Next.js 15',
@@ -43,14 +43,14 @@ export default function Home() {
     'Type-safe with TypeScript',
     'Dark mode support',
     'Mobile responsive design',
-  ]
+  ];
 
   if (!isLoaded) {
     return (
       <div className='min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-slate-900 dark:via-teal-900 dark:to-cyan-900 flex items-center justify-center'>
         <div className='animate-spin rounded-full h-32 w-32 border-b-2 border-emerald-600'></div>
       </div>
-    )
+    );
   }
 
   return (
@@ -339,5 +339,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }

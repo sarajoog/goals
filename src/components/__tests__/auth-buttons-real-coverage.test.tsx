@@ -3,10 +3,10 @@
  * for lines 1-35 of src/components/auth-buttons.tsx
  */
 
-import { render } from '@testing-library/react'
+import { render } from '@testing-library/react';
 
 // Ensure we're testing the real component, not any existing mocks
-jest.unmock('../auth-buttons')
+jest.unmock('../auth-buttons');
 
 // Mock only the external dependencies, not the component we're testing
 jest.mock('@clerk/nextjs', () => ({
@@ -19,44 +19,44 @@ jest.mock('@clerk/nextjs', () => ({
   ),
   SignInButton: () => <button data-testid='sign-in-button'>Sign In</button>,
   SignUpButton: () => <button data-testid='sign-up-button'>Sign Up</button>,
-}))
+}));
 
 jest.mock('@/components/ui/button', () => ({
   Button: ({ children, asChild, ...props }: any) => {
     // Handle the asChild prop properly to avoid React warnings
     if (asChild) {
-      return children
+      return children;
     }
     return (
       <div data-testid='button' {...props}>
         {children}
       </div>
-    )
+    );
   },
-}))
+}));
 
 jest.mock('@/app/user-dropdown', () => {
   return function UserDropdown() {
-    return <div data-testid='user-dropdown'>User Dropdown</div>
-  }
-})
+    return <div data-testid='user-dropdown'>User Dropdown</div>;
+  };
+});
 
 jest.mock('../loading-spinner', () => {
   return function LoadingSpinner() {
-    return <div data-testid='loading-spinner'>Loading...</div>
-  }
-})
+    return <div data-testid='loading-spinner'>Loading...</div>;
+  };
+});
 
 // Import the real component after mocking dependencies
-import AuthButtons from '../auth-buttons'
-import { useUser } from '@clerk/nextjs'
+import AuthButtons from '../auth-buttons';
+import { useUser } from '@clerk/nextjs';
 
-const mockUseUser = useUser as jest.MockedFunction<typeof useUser>
+const mockUseUser = useUser as jest.MockedFunction<typeof useUser>;
 
 describe('AuthButtons Real Coverage Tests', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
-  })
+    jest.clearAllMocks();
+  });
 
   test('covers lines 1-14: imports, exports, and function declaration', () => {
     // Setting up the mock to return a loaded state
@@ -64,7 +64,7 @@ describe('AuthButtons Real Coverage Tests', () => {
       isLoaded: true,
       isSignedIn: false,
       user: null,
-    } as any)
+    } as any);
 
     // This execution covers:
     // Line 1: 'use client' directive
@@ -75,12 +75,12 @@ describe('AuthButtons Real Coverage Tests', () => {
     // Line 7: import LoadingSpinner from './loading-spinner'
     // Line 9: export default function AuthButtons() {
     // Line 10: const { isLoaded } = useUser()
-    const { container } = render(<AuthButtons />)
+    const { container } = render(<AuthButtons />);
 
-    expect(container).toBeTruthy()
+    expect(container).toBeTruthy();
     // The component should have executed, verified by container having content
-    expect(container.firstChild).toBeTruthy()
-  })
+    expect(container.firstChild).toBeTruthy();
+  });
 
   test('covers lines 12-14: loading state when isLoaded is false', () => {
     // Test the loading state path
@@ -88,16 +88,16 @@ describe('AuthButtons Real Coverage Tests', () => {
       isLoaded: false,
       isSignedIn: false,
       user: null,
-    } as any)
+    } as any);
 
     // This execution covers:
     // Line 12: if (!isLoaded) {
     // Line 13: return <LoadingSpinner />
     // Line 14: }
-    const { container } = render(<AuthButtons />)
+    const { container } = render(<AuthButtons />);
 
-    expect(container.firstChild).toBeTruthy()
-  })
+    expect(container.firstChild).toBeTruthy();
+  });
 
   test('covers lines 16-27: signed out state', () => {
     // Test the signed out state
@@ -105,7 +105,7 @@ describe('AuthButtons Real Coverage Tests', () => {
       isLoaded: true,
       isSignedIn: false,
       user: null,
-    } as any)
+    } as any);
 
     // This execution covers:
     // Line 16: return (
@@ -120,10 +120,10 @@ describe('AuthButtons Real Coverage Tests', () => {
     // Line 25: </Button>
     // Line 26: </div>
     // Line 27: </SignedOut>
-    const { container } = render(<AuthButtons />)
+    const { container } = render(<AuthButtons />);
 
-    expect(container.querySelector('[data-testid="signed-out"]')).toBeTruthy()
-  })
+    expect(container.querySelector('[data-testid="signed-out"]')).toBeTruthy();
+  });
 
   test('covers lines 28-35: signed in state', () => {
     // Test the signed in state
@@ -131,7 +131,7 @@ describe('AuthButtons Real Coverage Tests', () => {
       isLoaded: true,
       isSignedIn: true,
       user: { id: 'test-user' },
-    } as any)
+    } as any);
 
     // This execution covers:
     // Line 28: <SignedIn>
@@ -142,10 +142,10 @@ describe('AuthButtons Real Coverage Tests', () => {
     // Line 33: </>
     // Line 34: )
     // Line 35: }
-    const { container } = render(<AuthButtons />)
+    const { container } = render(<AuthButtons />);
 
-    expect(container.querySelector('[data-testid="signed-in"]')).toBeTruthy()
-  })
+    expect(container.querySelector('[data-testid="signed-in"]')).toBeTruthy();
+  });
 
   test('covers all code paths in single comprehensive test', () => {
     // Test loading state
@@ -153,34 +153,34 @@ describe('AuthButtons Real Coverage Tests', () => {
       isLoaded: false,
       isSignedIn: false,
       user: null,
-    } as any)
+    } as any);
 
-    let result = render(<AuthButtons />)
-    expect(result.container).toBeTruthy()
-    result.unmount()
+    let result = render(<AuthButtons />);
+    expect(result.container).toBeTruthy();
+    result.unmount();
 
     // Test signed out state
     mockUseUser.mockReturnValue({
       isLoaded: true,
       isSignedIn: false,
       user: null,
-    } as any)
+    } as any);
 
-    result = render(<AuthButtons />)
-    expect(result.container).toBeTruthy()
-    result.unmount()
+    result = render(<AuthButtons />);
+    expect(result.container).toBeTruthy();
+    result.unmount();
 
     // Test signed in state
     mockUseUser.mockReturnValue({
       isLoaded: true,
       isSignedIn: true,
       user: { id: 'test-user' },
-    } as any)
+    } as any);
 
-    result = render(<AuthButtons />)
-    expect(result.container).toBeTruthy()
-    result.unmount()
+    result = render(<AuthButtons />);
+    expect(result.container).toBeTruthy();
+    result.unmount();
 
     // This comprehensive test ensures all lines 1-35 are executed
-  })
-})
+  });
+});

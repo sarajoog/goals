@@ -1,17 +1,17 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '@testing-library/react';
 
 // Ensure we're testing the real component, not a mock
-jest.unmock('../loading-spinner')
+jest.unmock('../loading-spinner');
 
-import ErrorBoundary from '../error-boundary'
-import React from 'react'
+import ErrorBoundary from '../error-boundary';
+import React from 'react';
 
 // Component that throws an error for testing
 function ThrowError({ shouldThrow = false }: { shouldThrow?: boolean }) {
   if (shouldThrow) {
-    throw new Error('Test error')
+    throw new Error('Test error');
   }
-  return <div data-testid='child-component'>Working Component</div>
+  return <div data-testid='child-component'>Working Component</div>;
 }
 
 // Custom fallback component for testing
@@ -21,31 +21,31 @@ function CustomFallback({ error }: { error?: Error }) {
       <h2>Custom Error Fallback</h2>
       <p>Error: {error?.message}</p>
     </div>
-  )
+  );
 }
 
 // Mock window.location.reload
-const mockReload = jest.fn()
+const mockReload = jest.fn();
 Object.defineProperty(window, 'location', {
   value: {
     reload: mockReload,
   },
   writable: true,
-})
+});
 
 describe('ErrorBoundary Component', () => {
-  let consoleErrorSpy: jest.SpyInstance
+  let consoleErrorSpy: jest.SpyInstance;
 
   beforeEach(() => {
-    jest.clearAllMocks()
-    mockReload.mockClear()
+    jest.clearAllMocks();
+    mockReload.mockClear();
     // Suppress console.error for error boundary tests to avoid noisy output
-    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
-  })
+    consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  });
 
   afterEach(() => {
-    consoleErrorSpy.mockRestore()
-  })
+    consoleErrorSpy.mockRestore();
+  });
 
   describe('Normal Operation', () => {
     test('should render children when no error occurs', () => {
@@ -53,12 +53,12 @@ describe('ErrorBoundary Component', () => {
         <ErrorBoundary>
           <ThrowError shouldThrow={false} />
         </ErrorBoundary>
-      )
+      );
 
-      const childComponent = screen.getByTestId('child-component')
-      expect(childComponent).toBeInTheDocument()
-      expect(childComponent).toHaveTextContent('Working Component')
-    })
+      const childComponent = screen.getByTestId('child-component');
+      expect(childComponent).toBeInTheDocument();
+      expect(childComponent).toHaveTextContent('Working Component');
+    });
 
     test('should not interfere with normal component rendering', () => {
       render(
@@ -68,15 +68,15 @@ describe('ErrorBoundary Component', () => {
             <p>This should render normally</p>
           </div>
         </ErrorBoundary>
-      )
+      );
 
-      const normalChild = screen.getByTestId('normal-child')
-      expect(normalChild).toBeInTheDocument()
-      expect(screen.getByText('Normal Content')).toBeInTheDocument()
+      const normalChild = screen.getByTestId('normal-child');
+      expect(normalChild).toBeInTheDocument();
+      expect(screen.getByText('Normal Content')).toBeInTheDocument();
       expect(
         screen.getByText('This should render normally')
-      ).toBeInTheDocument()
-    })
+      ).toBeInTheDocument();
+    });
 
     test('should handle multiple children correctly', () => {
       render(
@@ -85,19 +85,19 @@ describe('ErrorBoundary Component', () => {
           <div data-testid='child-2'>Child 2</div>
           <div data-testid='child-3'>Child 3</div>
         </ErrorBoundary>
-      )
+      );
 
-      expect(screen.getByTestId('child-1')).toBeInTheDocument()
-      expect(screen.getByTestId('child-2')).toBeInTheDocument()
-      expect(screen.getByTestId('child-3')).toBeInTheDocument()
-    })
-  })
+      expect(screen.getByTestId('child-1')).toBeInTheDocument();
+      expect(screen.getByTestId('child-2')).toBeInTheDocument();
+      expect(screen.getByTestId('child-3')).toBeInTheDocument();
+    });
+  });
 
   describe('Component Structure', () => {
     test('should export ErrorBoundary as default', () => {
-      expect(ErrorBoundary).toBeDefined()
-      expect(typeof ErrorBoundary).toBe('function')
-    })
+      expect(ErrorBoundary).toBeDefined();
+      expect(typeof ErrorBoundary).toBe('function');
+    });
 
     test('should accept children prop', () => {
       expect(() => {
@@ -105,9 +105,9 @@ describe('ErrorBoundary Component', () => {
           <ErrorBoundary>
             <div>Test content</div>
           </ErrorBoundary>
-        )
-      }).not.toThrow()
-    })
+        );
+      }).not.toThrow();
+    });
 
     test('should accept optional fallback prop', () => {
       expect(() => {
@@ -115,34 +115,34 @@ describe('ErrorBoundary Component', () => {
           <ErrorBoundary fallback={CustomFallback}>
             <div>Test content</div>
           </ErrorBoundary>
-        )
-      }).not.toThrow()
-    })
-  })
+        );
+      }).not.toThrow();
+    });
+  });
 
   describe('Edge Cases', () => {
     test('should handle null children gracefully', () => {
-      render(<ErrorBoundary>{null}</ErrorBoundary>)
+      render(<ErrorBoundary>{null}</ErrorBoundary>);
       // Should not crash
-      expect(true).toBe(true)
-    })
+      expect(true).toBe(true);
+    });
 
     test('should handle undefined children gracefully', () => {
-      render(<ErrorBoundary>{undefined}</ErrorBoundary>)
+      render(<ErrorBoundary>{undefined}</ErrorBoundary>);
       // Should not crash
-      expect(true).toBe(true)
-    })
+      expect(true).toBe(true);
+    });
 
     test('should handle empty children gracefully', () => {
-      render(<ErrorBoundary></ErrorBoundary>)
+      render(<ErrorBoundary></ErrorBoundary>);
       // Should not crash
-      expect(true).toBe(true)
-    })
-  })
+      expect(true).toBe(true);
+    });
+  });
 
   describe('Performance', () => {
     test('should not affect performance when no errors occur', () => {
-      const start = performance.now()
+      const start = performance.now();
 
       render(
         <ErrorBoundary>
@@ -150,24 +150,24 @@ describe('ErrorBoundary Component', () => {
           <div>More content</div>
           <div>Even more content</div>
         </ErrorBoundary>
-      )
+      );
 
-      const end = performance.now()
+      const end = performance.now();
 
       // Should render quickly (adjust threshold as needed)
-      expect(end - start).toBeLessThan(100)
-    })
+      expect(end - start).toBeLessThan(100);
+    });
 
     test('should handle memory cleanup properly', () => {
       const { unmount } = render(
         <ErrorBoundary>
           <div>Test content</div>
         </ErrorBoundary>
-      )
+      );
 
-      expect(() => unmount()).not.toThrow()
-    })
-  })
+      expect(() => unmount()).not.toThrow();
+    });
+  });
 
   describe('Error State UI Validation', () => {
     test('should have correct error UI structure when manually set', () => {
@@ -178,8 +178,8 @@ describe('ErrorBoundary Component', () => {
         { hasError: boolean; error?: Error }
       > {
         constructor(props: { children: React.ReactNode }) {
-          super(props)
-          this.state = { hasError: true, error: new Error('Test error') }
+          super(props);
+          this.state = { hasError: true, error: new Error('Test error') };
         }
 
         render() {
@@ -202,9 +202,9 @@ describe('ErrorBoundary Component', () => {
                   </button>
                 </div>
               </div>
-            )
+            );
           }
-          return this.props.children
+          return this.props.children;
         }
       }
 
@@ -212,17 +212,17 @@ describe('ErrorBoundary Component', () => {
         <TestErrorBoundary>
           <div>This won't be rendered</div>
         </TestErrorBoundary>
-      )
+      );
 
       // Verify error UI structure
-      expect(screen.getByText('Something went wrong')).toBeInTheDocument()
+      expect(screen.getByText('Something went wrong')).toBeInTheDocument();
       expect(
         screen.getByText(/We apologize for the inconvenience/)
-      ).toBeInTheDocument()
+      ).toBeInTheDocument();
       expect(
         screen.getByRole('button', { name: /refresh page/i })
-      ).toBeInTheDocument()
-    })
+      ).toBeInTheDocument();
+    });
 
     test('should have correct CSS classes for error UI', () => {
       // Test the same manually created error boundary
@@ -231,8 +231,8 @@ describe('ErrorBoundary Component', () => {
         { hasError: boolean }
       > {
         constructor(props: { children: React.ReactNode }) {
-          super(props)
-          this.state = { hasError: true }
+          super(props);
+          this.state = { hasError: true };
         }
 
         render() {
@@ -255,9 +255,9 @@ describe('ErrorBoundary Component', () => {
                   </button>
                 </div>
               </div>
-            )
+            );
           }
-          return this.props.children
+          return this.props.children;
         }
       }
 
@@ -265,21 +265,21 @@ describe('ErrorBoundary Component', () => {
         <TestErrorBoundary>
           <div>This won't be rendered</div>
         </TestErrorBoundary>
-      )
+      );
 
-      const container = screen.getByText('Something went wrong').closest('div')
+      const container = screen.getByText('Something went wrong').closest('div');
       expect(container?.parentElement).toHaveClass(
         'min-h-screen',
         'flex',
         'items-center',
         'justify-center',
         'p-4'
-      )
+      );
 
-      const heading = screen.getByText('Something went wrong')
-      expect(heading).toHaveClass('text-xl', 'font-semibold', 'mb-2')
+      const heading = screen.getByText('Something went wrong');
+      expect(heading).toHaveClass('text-xl', 'font-semibold', 'mb-2');
 
-      const button = screen.getByRole('button', { name: /refresh page/i })
+      const button = screen.getByRole('button', { name: /refresh page/i });
       expect(button).toHaveClass(
         'px-4',
         'py-2',
@@ -288,7 +288,7 @@ describe('ErrorBoundary Component', () => {
         'rounded',
         'hover:bg-gray-800',
         'transition-colors'
-      )
-    })
-  })
-})
+      );
+    });
+  });
+});

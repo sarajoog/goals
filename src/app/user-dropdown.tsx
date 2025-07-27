@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import { UserButton } from '@clerk/nextjs'
-import { useUser } from '@clerk/nextjs'
-import React from 'react'
-import LoadingSpinner from '@/components/loading-spinner'
+import { UserButton } from '@clerk/nextjs';
+import { useUser } from '@clerk/nextjs';
+import React from 'react';
+import LoadingSpinner from '@/components/loading-spinner';
 
 export default function UserDropdown() {
-  const { isLoaded, isSignedIn } = useUser()
+  const { isLoaded, isSignedIn } = useUser();
 
   if (!isLoaded) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
 
   if (!isSignedIn) {
-    return null
+    return null;
   }
 
   return (
@@ -30,5 +30,5 @@ export default function UserDropdown() {
         },
       }}
     />
-  )
+  );
 }

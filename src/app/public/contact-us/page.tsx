@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Mail,
   Phone,
@@ -8,7 +8,7 @@ import {
   MessageSquare,
   Headphones,
   Users,
-} from 'lucide-react'
+} from 'lucide-react';
 
 const ContactUs = () => {
   const contactMethods = [
@@ -44,7 +44,7 @@ const ContactUs = () => {
       action: 'Browse FAQ',
       color: 'text-orange-600',
     },
-  ]
+  ];
 
   const officeLocations = [
     {
@@ -65,14 +65,14 @@ const ContactUs = () => {
       phone: '+44 20 7123 4567',
       hours: 'Mon-Fri: 9 AM - 5 PM GMT',
     },
-  ]
+  ];
 
   const supportStats = [
     { icon: Users, label: 'Support Agents', value: '50+' },
     { icon: Clock, label: 'Avg Response Time', value: '< 2hrs' },
     { icon: MessageSquare, label: 'Tickets Resolved', value: '10K+' },
     { icon: Phone, label: 'Customer Satisfaction', value: '98%' },
-  ]
+  ];
 
   return (
     <div className='space-y-12'>
@@ -251,7 +251,7 @@ const ContactUs = () => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ContactUs
+export default ContactUs;

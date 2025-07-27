@@ -1,9 +1,9 @@
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 
 // Mock environment variables
-process.env.NEXT_PUBLIC_APP_NAME = 'Test App'
-process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = 'pk_test_mock_key'
-process.env.CLERK_SECRET_KEY = 'sk_test_mock_key'
+process.env.NEXT_PUBLIC_APP_NAME = 'Test App';
+process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = 'pk_test_mock_key';
+process.env.CLERK_SECRET_KEY = 'sk_test_mock_key';
 
 // Mock Next.js Image component
 jest.mock('next/image', () => ({
@@ -24,7 +24,7 @@ jest.mock('next/image', () => ({
       onLoadingComplete,
       style,
       ...imgProps
-    } = props
+    } = props;
 
     // Handle fill prop by applying appropriate styling
     const finalStyle = fill
@@ -37,12 +37,12 @@ jest.mock('next/image', () => ({
           objectFit: style?.objectFit || 'cover',
           ...style,
         }
-      : style
+      : style;
 
     // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
-    return <img {...imgProps} style={finalStyle} />
+    return <img {...imgProps} style={finalStyle} />;
   },
-}))
+}));
 
 // Mock Next.js Link component
 jest.mock('next/link', () => ({
@@ -52,9 +52,9 @@ jest.mock('next/link', () => ({
       <a href={href} {...props}>
         {children}
       </a>
-    )
+    );
   },
-}))
+}));
 
 // Mock Next.js Navigation
 jest.mock('next/navigation', () => ({
@@ -77,7 +77,7 @@ jest.mock('next/navigation', () => ({
   }),
   usePathname: () => '/',
   useParams: () => ({}),
-}))
+}));
 
 // Mock Clerk
 jest.mock('@clerk/nextjs', () => ({
@@ -116,33 +116,33 @@ jest.mock('@clerk/nextjs', () => ({
     isLoaded: true,
     signOut: jest.fn(),
   })),
-}))
+}));
 
 // Mock Clerk middleware
 jest.mock('@clerk/nextjs/server', () => ({
   clerkMiddleware: () => jest.fn(),
-}))
+}));
 
 // Mock Lucide React icons
 jest.mock('lucide-react', () => ({
   ChartColumnBigIcon: ({ ...props }) => (
     <div data-testid='chart-icon' {...props} />
   ),
-}))
+}));
 
 // Mock loading spinner component
 jest.mock('@/components/loading-spinner', () => {
   return function MockLoadingSpinner() {
-    return <div data-testid='loading-spinner'>Loading...</div>
-  }
-})
+    return <div data-testid='loading-spinner'>Loading...</div>;
+  };
+});
 
 // Mock error boundary component
 jest.mock('@/components/error-boundary', () => {
   return function MockErrorBoundary({ children }) {
-    return <div data-testid='error-boundary'>{children}</div>
-  }
-})
+    return <div data-testid='error-boundary'>{children}</div>;
+  };
+});
 
 // Mock auth buttons component
 jest.mock('@/components/auth-buttons', () => {
@@ -159,23 +159,23 @@ jest.mock('@/components/auth-buttons', () => {
           <div data-testid='user-button'>User Menu</div>
         </div>
       </>
-    )
-  }
-})
+    );
+  };
+});
 
 // Global test utilities
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
   disconnect: jest.fn(),
-}))
+}));
 
 // Mock IntersectionObserver
 global.IntersectionObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
   disconnect: jest.fn(),
-}))
+}));
 
 // Mock matchMedia
 Object.defineProperty(window, 'matchMedia', {
@@ -190,13 +190,13 @@ Object.defineProperty(window, 'matchMedia', {
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),
   })),
-})
+});
 
 // Mock CSS files
-jest.mock('@styles/globals.css', () => ({}))
+jest.mock('@styles/globals.css', () => ({}));
 
 // Setup for coverage improvements
 beforeEach(() => {
   // Reset all mocks before each test
-  jest.clearAllMocks()
-})
+  jest.clearAllMocks();
+});

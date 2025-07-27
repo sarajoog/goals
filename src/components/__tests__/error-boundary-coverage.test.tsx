@@ -1,47 +1,47 @@
-import { render, screen } from '@testing-library/react'
-import ErrorBoundary from '../error-boundary'
-import React from 'react'
+import { render, screen } from '@testing-library/react';
+import ErrorBoundary from '../error-boundary';
+import React from 'react';
 
 // Mock window.location.reload
-const mockReload = jest.fn()
+const mockReload = jest.fn();
 Object.defineProperty(window, 'location', {
   value: { reload: mockReload },
   writable: true,
-})
+});
 
 describe('ErrorBoundary Coverage Tests', () => {
   beforeEach(() => {
-    jest.clearAllMocks()
-    mockReload.mockClear()
-  })
+    jest.clearAllMocks();
+    mockReload.mockClear();
+  });
 
   test('should execute normal rendering code path', () => {
     render(
       <ErrorBoundary>
         <div data-testid='test-child'>Test Content</div>
       </ErrorBoundary>
-    )
+    );
 
     // This exercises the normal rendering path
-    expect(screen.getByTestId('test-child')).toBeInTheDocument()
-  })
+    expect(screen.getByTestId('test-child')).toBeInTheDocument();
+  });
 
   test('should execute fallback prop code path', () => {
     function CustomFallback({ error }: { error?: Error }) {
       return (
         <div data-testid='custom-fallback'>Custom Error: {error?.message}</div>
-      )
+      );
     }
 
     render(
       <ErrorBoundary fallback={CustomFallback}>
         <div data-testid='test-child'>Test Content</div>
       </ErrorBoundary>
-    )
+    );
 
     // This exercises the fallback prop handling path
-    expect(screen.getByTestId('test-child')).toBeInTheDocument()
-  })
+    expect(screen.getByTestId('test-child')).toBeInTheDocument();
+  });
 
   test('should manually test error state rendering', () => {
     // Create a component that manually triggers the error state
@@ -50,8 +50,8 @@ describe('ErrorBoundary Coverage Tests', () => {
       { hasError: boolean; error?: Error }
     > {
       constructor(props: { children: React.ReactNode }) {
-        super(props)
-        this.state = { hasError: true, error: new Error('Test error') }
+        super(props);
+        this.state = { hasError: true, error: new Error('Test error') };
       }
 
       // Copy the exact render logic from the real ErrorBoundary
@@ -75,9 +75,9 @@ describe('ErrorBoundary Coverage Tests', () => {
                 </button>
               </div>
             </div>
-          )
+          );
         }
-        return this.props.children
+        return this.props.children;
       }
     }
 
@@ -85,12 +85,12 @@ describe('ErrorBoundary Coverage Tests', () => {
       <TestErrorBoundary>
         <div>Won't be rendered</div>
       </TestErrorBoundary>
-    )
+    );
 
     // This tests the error UI rendering logic
-    expect(screen.getByText('Something went wrong')).toBeInTheDocument()
+    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
     expect(
       screen.getByRole('button', { name: /refresh page/i })
-    ).toBeInTheDocument()
-  })
-})
+    ).toBeInTheDocument();
+  });
+});

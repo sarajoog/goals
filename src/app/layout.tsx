@@ -1,18 +1,18 @@
-import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
-import '@styles/globals.css'
-import Link from 'next/link'
-import { ChartColumnBigIcon } from 'lucide-react'
-import { ClerkProvider } from '@clerk/nextjs'
-import ErrorBoundary from '@/components/error-boundary'
-import AuthButtons from '@/components/auth-buttons'
-import AuthRedirect from '@/components/auth-redirect'
+import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
+import '@styles/globals.css';
+import Link from 'next/link';
+import { ChartColumnBigIcon } from 'lucide-react';
+import { ClerkProvider } from '@clerk/nextjs';
+import ErrorBoundary from '@/components/error-boundary';
+import AuthButtons from '@/components/auth-buttons';
+import AuthRedirect from '@/components/auth-redirect';
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-poppins',
   subsets: ['latin'],
-})
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,17 +25,17 @@ export const metadata: Metadata = {
   icons: {
     icon: '/icon.svg',
   },
-}
+};
 
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <ClerkProvider
@@ -78,5 +78,5 @@ export default function RootLayout({
         </body>
       </html>
     </ClerkProvider>
-  )
+  );
 }

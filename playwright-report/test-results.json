@@ -15,20 +15,14 @@
     },
     "preserveOutput": "always",
     "reporter": [
-      [
-        "html",
-        null
-      ],
+      ["html", null],
       [
         "json",
         {
           "outputFile": "playwright-report/test-results.json"
         }
       ],
-      [
-        "line",
-        null
-      ]
+      ["line", null]
     ],
     "reportSlowTests": {
       "max": 5,
@@ -47,9 +41,7 @@
         "name": "chromium",
         "testDir": "/home/vedat/Documents/personal/templates/nextjs-clerk-template/e2e",
         "testIgnore": [],
-        "testMatch": [
-          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
-        ],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
         "timeout": 30000
       },
       {
@@ -63,9 +55,7 @@
         "name": "firefox",
         "testDir": "/home/vedat/Documents/personal/templates/nextjs-clerk-template/e2e",
         "testIgnore": [],
-        "testMatch": [
-          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
-        ],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
         "timeout": 30000
       }
     ],

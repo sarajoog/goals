@@ -1,14 +1,14 @@
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-import { FlatCompat } from '@eslint/eslintrc'
-import prettier from 'eslint-plugin-prettier'
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
+import prettier from 'eslint-plugin-prettier';
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-})
+});
 
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
@@ -18,24 +18,28 @@ const eslintConfig = [
       prettier: prettier,
     },
     rules: {
-      semi: ['error', 'never'],
+      semi: ['error', 'always'],
       quotes: ['error', 'single', { avoidEscape: true }],
       'prettier/prettier': [
         'error',
         {
-          semi: false, // Should match your ESLint semi rule
+          semi: true, // Should match your ESLint semi rule
           singleQuote: true,
           jsxSingleQuote: true,
           trailingComma: 'es5',
           printWidth: 80,
           tabWidth: 2,
-          endOfLine: 'auto'
+          endOfLine: 'auto',
         },
       ],
     },
   },
   {
-    files: ['**/__tests__/**/*.{ts,tsx}', '**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}'],
+    files: [
+      '**/__tests__/**/*.{ts,tsx}',
+      '**/*.test.{ts,tsx}',
+      '**/*.spec.{ts,tsx}',
+    ],
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
@@ -46,6 +50,6 @@ const eslintConfig = [
       '@next/next/no-img-element': 'off',
     },
   },
-]
+];
 
-export default eslintConfig
+export default eslintConfig;

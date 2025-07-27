@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
+import Link from 'next/link';
 import {
   Home,
   Info,
@@ -8,16 +8,16 @@ import {
   Globe,
   LayoutDashboard,
   User,
-} from 'lucide-react'
-import ThemeSwitch from '@/components/theme-switch'
-import { useUser } from '@clerk/nextjs'
+} from 'lucide-react';
+import ThemeSwitch from '@/components/theme-switch';
+import { useUser } from '@clerk/nextjs';
 
 export default function UnprotectedLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  const { isSignedIn } = useUser()
+  const { isSignedIn } = useUser();
   return (
     <div className='min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-slate-900 dark:via-teal-900 dark:to-cyan-900'>
       {/* Animated background elements */}
@@ -165,5 +165,5 @@ export default function UnprotectedLayout({
         </div>
       </div>
     </div>
-  )
+  );
 }

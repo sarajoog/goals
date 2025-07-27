@@ -1,16 +1,16 @@
-'use client'
+'use client';
 
-import { useUser } from '@clerk/nextjs'
-import { SignedIn, SignedOut, SignInButton, SignUpButton } from '@clerk/nextjs'
-import { Button } from '@/components/ui/button'
-import UserDropdown from '@/app/user-dropdown'
-import LoadingSpinner from './loading-spinner'
+import { useUser } from '@clerk/nextjs';
+import { SignedIn, SignedOut, SignInButton, SignUpButton } from '@clerk/nextjs';
+import { Button } from '@/components/ui/button';
+import UserDropdown from '@/app/user-dropdown';
+import LoadingSpinner from './loading-spinner';
 
 export default function AuthButtons() {
-  const { isLoaded } = useUser()
+  const { isLoaded } = useUser();
 
   if (!isLoaded) {
-    return <LoadingSpinner />
+    return <LoadingSpinner />;
   }
 
   return (
@@ -37,5 +37,5 @@ export default function AuthButtons() {
         <UserDropdown />
       </SignedIn>
     </>
-  )
+  );
 }

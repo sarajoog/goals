@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {
   Shield,
   Zap,
@@ -7,7 +7,7 @@ import {
   Smartphone,
   Cloud,
   Headphones,
-} from 'lucide-react'
+} from 'lucide-react';
 
 export default function AppInfo() {
   const features = [
@@ -53,14 +53,14 @@ export default function AppInfo() {
         'Seamless integration with popular cloud services and storage providers.',
       color: 'text-cyan-600',
     },
-  ]
+  ];
 
   const stats = [
     { number: '100K+', label: 'Active Users', icon: Users },
     { number: '99.9%', label: 'Uptime', icon: Shield },
     { number: '24/7', label: 'Support', icon: Headphones },
     { number: '50+', label: 'Countries', icon: Globe },
-  ]
+  ];
 
   const technologies = [
     { name: 'Next.js', description: 'React framework for production' },
@@ -69,7 +69,7 @@ export default function AppInfo() {
     { name: 'Clerk', description: 'Authentication & user management' },
     { name: 'Vercel', description: 'Deployment platform' },
     { name: 'Prisma', description: 'Database toolkit' },
-  ]
+  ];
 
   return (
     <div className='space-y-12'>
@@ -172,5 +172,5 @@ export default function AppInfo() {
         </div>
       </div>
     </div>
-  )
+  );
 }
