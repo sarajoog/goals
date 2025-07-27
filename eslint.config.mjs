@@ -22,8 +22,7 @@ const eslintConfig = [
       quotes: ['error', 'single', { avoidEscape: true }],
       'prettier/prettier': [
         'error',
-        {
-          semi: true, // Should match your ESLint semi rule
+        { 
           singleQuote: true,
           jsxSingleQuote: true,
           trailingComma: 'es5',
