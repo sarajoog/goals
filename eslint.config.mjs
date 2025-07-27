@@ -23,7 +23,7 @@ const eslintConfig = [
       'prettier/prettier': [
         'error',
         {
-          semi: false, // Should match your ESLint semi rule
+          semi: true, // Should match your ESLint semi rule
           singleQuote: true,
           jsxSingleQuote: true,
           trailingComma: 'es5',
