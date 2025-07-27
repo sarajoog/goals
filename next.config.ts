@@ -1,4 +1,4 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
@@ -11,9 +11,9 @@ const nextConfig: NextConfig = {
   // },
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
-      config.devtool = 'source-map'
+      config.devtool = 'source-map';
     }
-    return config
+    return config;
   },
   async headers() {
     return [
@@ -72,8 +72,8 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-    ]
+    ];
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
