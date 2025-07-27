@@ -23,7 +23,7 @@ const eslintConfig = [
       'prettier/prettier': [
         'error',
         {
-          semi: true, // Should match your ESLint semi rule
+          semi: true,
           singleQuote: true,
           jsxSingleQuote: true,
           trailingComma: 'es5',
@@ -32,6 +32,11 @@ const eslintConfig = [
           endOfLine: 'auto',
         },
       ],
+      '@typescript-eslint/no-require-imports': 'off', // Allow require() in config files
+      '@typescript-eslint/no-unused-vars': ['error', { 
+        varsIgnorePattern: '^_', // Ignore variables starting with _
+        argsIgnorePattern: '^_' 
+      }],
     },
   },
   {
@@ -50,6 +55,15 @@ const eslintConfig = [
       '@next/next/no-img-element': 'off',
     },
   },
+  {
+    ignores: [
+      ".next/**/*",       // Ignore Next.js build files
+      "**/*.d.ts",        // Ignore TypeScript declaration files
+      "jest.config.js",   // Ignore Jest config
+      "jest.setup.js",    // Ignore Jest setup
+      "node_modules/**/*" // Ignore node_modules (just in case)
+    ]
+  }
 ];
 
 export default eslintConfig;
