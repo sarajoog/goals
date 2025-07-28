@@ -82,8 +82,7 @@ const ContactUs = () => {
           Get in Touch
         </h1>
         <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
-          Have questions or need support?
-          Choose the best way to reach me below.
+          Have questions or need support? Choose the best way to reach me below.
         </p>
       </div>
 

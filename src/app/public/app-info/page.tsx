@@ -80,7 +80,9 @@ export default function AppInfo() {
         </h1>
         <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
           A modern, secure, and scalable application built with the latest
-          technologies. Experience effortless goal tracking, real-time collaboration, and a clean interface that keeps you focused and motivated
+          technologies. Experience effortless goal tracking, real-time
+          collaboration, and a clean interface that keeps you focused and
+          motivated
         </p>
       </div>
 

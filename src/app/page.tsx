@@ -165,7 +165,9 @@ export default function Home() {
                     {/* <span className='text-foreground'></span> */}
                   </h1>
                   <p className='text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed'>
-                    Turn ambition into action. Stay motivated and organized with a clean, motivating goal-tracking experience desgined to keep you moving forward
+                    Turn ambition into action. Stay motivated and organized with
+                    a clean, motivating goal-tracking experience desgined to
+                    keep you moving forward
                   </p>
                 </div>
 
