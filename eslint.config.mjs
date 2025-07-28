@@ -33,10 +33,13 @@ const eslintConfig = [
         },
       ],
       '@typescript-eslint/no-require-imports': 'off', // Allow require() in config files
-      '@typescript-eslint/no-unused-vars': ['error', { 
-        varsIgnorePattern: '^_', // Ignore variables starting with _
-        argsIgnorePattern: '^_' 
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          varsIgnorePattern: '^_', // Ignore variables starting with _
+          argsIgnorePattern: '^_',
+        },
+      ],
     },
   },
   {
@@ -57,13 +60,13 @@ const eslintConfig = [
   },
   {
     ignores: [
-      ".next/**/*",       // Ignore Next.js build files
-      "**/*.d.ts",        // Ignore TypeScript declaration files
-      "jest.config.js",   // Ignore Jest config
-      "jest.setup.js",    // Ignore Jest setup
-      "node_modules/**/*" // Ignore node_modules (just in case)
-    ]
-  }
+      '.next/**/*', // Ignore Next.js build files
+      '**/*.d.ts', // Ignore TypeScript declaration files
+      'jest.config.js', // Ignore Jest config
+      'jest.setup.js', // Ignore Jest setup
+      'node_modules/**/*', // Ignore node_modules (just in case)
+    ],
+  },
 ];
 
 export default eslintConfig;
