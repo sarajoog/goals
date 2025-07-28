@@ -34,7 +34,7 @@ const eslintConfig = [
       ],
       '@typescript-eslint/no-require-imports': 'off', // Allow require() in config files
       '@typescript-eslint/no-unused-vars': [
-        'warn',
+        'error',
         {
           varsIgnorePattern: '^_', // Ignore variables starting with _
           argsIgnorePattern: '^_',
