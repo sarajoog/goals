@@ -16,15 +16,15 @@ const ContactUs = () => {
       icon: Mail,
       title: 'Email Support',
       description: 'Get help via email within 24 hours',
-      contact: 'support@platform.com',
+      contact: 'ahmedhass0609@gmail.com',
       action: 'Send Email',
       color: 'text-emerald-600',
     },
     {
       icon: Phone,
       title: 'Phone Support',
-      description: 'Talk to our support team directly',
-      contact: '+1 (555) 123-4567',
+      description: 'Quick answers, just a call way',
+      contact: '+1 (613) 301-0561',
       action: 'Call Now',
       color: 'text-blue-600',
     },
@@ -82,13 +82,13 @@ const ContactUs = () => {
           Get in Touch
         </h1>
         <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
-          Have questions or need support? Our team is here to help you succeed.
-          Choose the best way to reach us below.
+          Have questions or need support?
+          Choose the best way to reach me below.
         </p>
       </div>
 
       {/* Support Stats */}
-      <div className='grid grid-cols-2 md:grid-cols-4 gap-6'>
+      {/* <div className='grid grid-cols-2 md:grid-cols-4 gap-6'>
         {supportStats.map((stat, index) => (
           <div key={index} className='text-center'>
             <div className='inline-flex items-center justify-center w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg mb-3'>
@@ -100,13 +100,13 @@ const ContactUs = () => {
             <div className='text-sm text-muted-foreground'>{stat.label}</div>
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* Contact Methods */}
       <div>
         <h2 className='text-3xl font-bold text-center mb-12'>
           <span className='bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text text-transparent'>
-            How Can We Help?
+            My Contact Information
           </span>
         </h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>

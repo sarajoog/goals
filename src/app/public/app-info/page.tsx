@@ -29,7 +29,7 @@ export default function AppInfo() {
       icon: Users,
       title: 'Team Collaboration',
       description:
-        'Built-in tools for seamless team collaboration and project management.',
+        'Collaborate seamlessly with your team to set, track, and crush shared goals - together',
       color: 'text-blue-600',
     },
     {
@@ -68,7 +68,7 @@ export default function AppInfo() {
     { name: 'Tailwind CSS', description: 'Utility-first CSS framework' },
     { name: 'Clerk', description: 'Authentication & user management' },
     { name: 'Vercel', description: 'Deployment platform' },
-    { name: 'Prisma', description: 'Database toolkit' },
+    { name: 'Firestore', description: 'Database' },
   ];
 
   return (
@@ -80,13 +80,12 @@ export default function AppInfo() {
         </h1>
         <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
           A modern, secure, and scalable application built with the latest
-          technologies. Experience the future of web applications with our
-          cutting-edge platform.
+          technologies. Experience effortless goal tracking, real-time collaboration, and a clean interface that keeps you focused and motivated
         </p>
       </div>
 
       {/* Stats Section */}
-      <div className='grid grid-cols-2 md:grid-cols-4 gap-6'>
+      {/* <div className='grid grid-cols-2 md:grid-cols-4 gap-6'>
         {stats.map((stat, index) => (
           <div key={index} className='text-center'>
             <div className='inline-flex items-center justify-center w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg mb-3'>
@@ -98,7 +97,7 @@ export default function AppInfo() {
             <div className='text-sm text-muted-foreground'>{stat.label}</div>
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* Features Grid */}
       <div>

@@ -73,7 +73,7 @@ export default function Home() {
               </div>
               <div>
                 <h1 className='text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text text-transparent'>
-                  Next-Gen Platform
+                  Goal Rush
                 </h1>
               </div>
             </div>
@@ -136,7 +136,7 @@ export default function Home() {
               <div className='flex items-center space-x-3'>
                 <div className='w-2 h-2 bg-emerald-500 rounded-full animate-pulse'></div>
                 <span className='text-sm font-medium text-muted-foreground'>
-                  Welcome home ahmed
+                  Welcome home Ahmed
                 </span>
               </div>
               <div className='flex items-center space-x-2'>
@@ -155,19 +155,17 @@ export default function Home() {
                 <div className='space-y-4'>
                   <div className='inline-flex items-center px-4 py-2 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-400 rounded-full text-sm font-medium'>
                     <Star className='h-4 w-4 mr-2' />
-                    Welcome to the Future
+                    Welcome to your launchpad for progress and momentum
                   </div>
                   <h1 className='text-3xl md:text-5xl font-bold tracking-tight'>
                     <span className='bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400 bg-clip-text text-transparent'>
-                      Next-Gen
+                      GoalRush
                     </span>
-                    <br />
-                    <span className='text-foreground'>Platform</span>
+                    {/* <br /> */}
+                    {/* <span className='text-foreground'></span> */}
                   </h1>
                   <p className='text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed'>
-                    Experience the perfect blend of modern technology, beautiful
-                    design, and powerful features. Built for developers,
-                    designed for users.
+                    Turn ambition into action. Stay motivated and organized with a clean, motivating goal-tracking experience desgined to keep you moving forward
                   </p>
                 </div>
 
@@ -198,8 +196,7 @@ export default function Home() {
                     </span>
                   </h2>
                   <p className='text-lg text-muted-foreground max-w-2xl mx-auto'>
-                    Everything you need to build modern applications, right out
-                    of the box.
+                    We make staying on track feel rewarding, not overwhelming
                   </p>
                 </div>
 
@@ -224,7 +221,7 @@ export default function Home() {
               </div>
 
               {/* Benefits Section */}
-              <div className='bg-gradient-to-r from-emerald-500/10 to-teal-500/10 dark:from-emerald-400/10 dark:to-teal-400/10 rounded-3xl p-12 border border-emerald-200/50 dark:border-emerald-800/50'>
+              {/* <div className='bg-gradient-to-r from-emerald-500/10 to-teal-500/10 dark:from-emerald-400/10 dark:to-teal-400/10 rounded-3xl p-12 border border-emerald-200/50 dark:border-emerald-800/50'>
                 <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
                   <div className='space-y-6'>
                     <h2 className='text-2xl md:text-3xl font-bold'>
@@ -256,7 +253,7 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               {/* CTA Section */}
               <div className='text-center space-y-8 py-12'>
